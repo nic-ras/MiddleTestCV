@@ -1,0 +1,7 @@
+data/
+build/
+.vscode/
+build.sh
+compile.sh
+run.sh
+compile_commands.json
