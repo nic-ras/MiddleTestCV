@@ -4,6 +4,7 @@ set( MiddleTestCV_src
     main.cpp
     dataset.cpp
     detector.cpp
+    performance.cpp
 )
 add_executable(MiddleTestCV ${MiddleTestCV_src})
 
