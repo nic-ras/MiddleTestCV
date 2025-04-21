@@ -17,20 +17,6 @@ jobs:
       packages: read
       actions: read
       contents: read
-      
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-
-    - name: Install OpenCV
-      run: sudo apt update && sudo apt install -y libopencv-dev
-
-    - name: Compile
-      run: g++ main.cpp -o main `pkg-config --cflags --libs opencv4`
-
     strategy:
       fail-fast: false
       matrix:
@@ -42,26 +28,25 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    # Mostra il log degli ultimi commit
     - name: Show git log
       run: |
         echo "Recent commits:"
         git log -n 10 --oneline
 
-    # Aggiungi il comando di compilazione manuale
-    - if: matrix.build-mode == 'manual'
-      shell: bash
-      run: |
-        g++ main.cpp -o main
+    - name: Install OpenCV
+      run: sudo apt update && sudo apt install -y libopencv-dev
 
-    # Inizializza CodeQL
+    - name: Compile manually if needed
+      if: matrix.build-mode == 'manual'
+      shell: bash
+      run: g++ main.cpp -o main `pkg-config --cflags --libs opencv4`
+
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v3
       with:
         languages: ${{ matrix.language }}
         build-mode: ${{ matrix.build-mode }}
 
-    # Esegui l'analisi CodeQL
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
       with:
