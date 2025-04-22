@@ -165,6 +165,13 @@ Label Label::parse(const std::string &line)
     return label;
 }
 
+std::string Label::toString(const Label &label)
+{
+    return label.objectId + "_" + label.objectName + " " +
+           std::to_string(label.xmin) + " " + std::to_string(label.ymin) + " " +
+           std::to_string(label.xmax) + " " + std::to_string(label.ymax);
+}
+
 Model Model::load(Model &model, const std::string &file, std::string &type)
 {
     cv::Mat mat = cv::imread(file);

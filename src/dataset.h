@@ -29,6 +29,7 @@ struct Label
     int ymax;
 
     static Label parse(const std::string &line);
+    static std::string toString(const Label &label);
 
     friend std::ostream &operator<<(std::ostream &os, const Label &label)
     {
@@ -62,7 +63,7 @@ private:
     std::unordered_map<std::string , cv::Mat> m_testImages; // filename -> image
     // perhaps it doesn't make much sense to make this a map, but it would be easier to look up if needed
     std::unordered_map<std::string, Model> m_models; // createModelMapKey(objectId, angle, modelId) -> model
-    std::unordered_map<std::string , std::vector<Label>> m_labels; // filename -> label
+    std::unordered_map<std::string, std::vector<Label>> m_labels; // filename -> label
 
     std::unordered_map<std::string, std::string> m_objects; // id -> name
 };
