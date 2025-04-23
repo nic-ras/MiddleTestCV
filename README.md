@@ -1,5 +1,5 @@
 # MiddleTestCV
-Repository for the computer vision middle test 
+Repository for the computer vision middle test
 
 # Instructions
 - Clone the repository
