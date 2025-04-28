@@ -1,3 +1,11 @@
+/*
+Name: Abioye Obaloluwa Peter
+Working hours: 6
+
+Name: Nicolò Rasera
+Working hours: 5
+*/
+
 #include "libraries.h"
 #include <opencv2/opencv.hpp>
 #include "feature_matcher.h"

@@ -1,3 +1,7 @@
+/*
+Name: Nicolò Rasera
+*/
+
 #include "libraries.h"
 
 int SIFT( cv::Mat& original, cv::Mat& output){
